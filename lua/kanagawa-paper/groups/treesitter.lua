@@ -62,7 +62,7 @@ function M.setup(colors, opts)
 		-- @function.method.call   method calls
 		--
 		-- @constructor            constructor calls and type instantiations
-		["@constructor"] = { fg = theme.syn.type },
+		["@constructor"] = vim.tbl_extend("force", { fg = theme.syn.type }, opts.styles.type),
 		-- @operator               symbolic operators (e.g. `+`, `*`)
 		["@operator"] = { fg = theme.syn.operator },
 		--
@@ -95,9 +95,9 @@ function M.setup(colors, opts)
 		-- @punctuation.special    special symbols (e.g. `{}` in string interpolation)
 		["@punctuation.special"] = { fg = theme.syn.symbol },
 		-- @comment                line and block comments
-		["@comment"] = { fg = theme.syn.comment },
+		["@comment"] = { link = "Comment" },
 		-- @comment.documentation  comments documenting code
-		["@comment.documentation"] = { fg = theme.syn.docstring, italic = true },
+		["@comment.documentation"] = vim.tbl_extend("force", { fg = theme.syn.docstring }, opts.styles.comment),
 		-- @comment.error          error-type comments (e.g. `ERROR`, `FIXME`)
 		["@comment.error"] = { fg = theme.ui.bg, bg = theme.diag.error, bold = true },
 		-- @comment.warning        warning-type comments (e.g. `WARNING`, `FIX`, `HACK`)
